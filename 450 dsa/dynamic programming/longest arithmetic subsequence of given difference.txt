@@ -1,5 +1,6 @@
 class Solution {
-public:
+public://generally will work for when difference=1
+
     int longestSubsequence(vector<int>& arr, int difference) {
         int size=arr.size();
         int dp[size];
@@ -10,7 +11,7 @@ public:
         
         int j;
         
-        for(i=0;i<size;i++)
+        for(i=1;i<size;i++)
         {for(j=0;j<i;j++)
         {
             if(arr[i]-arr[j]==difference||arr[i]-arr[j]==-difference)

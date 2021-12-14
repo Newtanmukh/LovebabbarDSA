@@ -10,8 +10,8 @@ class Solution {
 	{ 
 		lis[i] = 1; 
 		for (int j = 0; j < i; j++ ) 
-			if ( nums[i] > nums[j] && lis[i] < lis[j] + 1) 
-				lis[i] = lis[j] + 1; 
+			if ( nums[i] > nums[j] ) 
+				lis[i] = max(lis[i],lis[j] + 1); //lis[i] denotes the maximum subsequence upto i including index i.
 	} 
 
 	return *max_element(lis, lis+nums.size()); 

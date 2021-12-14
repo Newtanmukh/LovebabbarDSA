@@ -14,7 +14,7 @@ public:
         int i,j;
         for(j=0;j<=nums.size();j++)
         {
-            a[0][j]=true;
+            a[0][j]=true;    //always possible to partition sum 0. all coins on one side, no coin on the other.
         }
         
         for(j=1;j<p+1;j++)
