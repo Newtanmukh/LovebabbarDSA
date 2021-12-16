@@ -1,0 +1,67 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+#define SIZE 10
+
+
+struct Node {
+    int key;
+    Node *left, *right;
+};
+ 
+int max(int a,int b)
+{if(a>b)
+return a;
+return b;}
+
+Node* newNode(int key)
+{
+    Node* temp = new Node;
+    temp->key = key;
+    temp->left = temp->right = NULL;
+    return temp;
+}
+
+
+int maxsum(Node* root,int &maxi)
+{
+  if(!root)
+  return 0;
+
+  if(!root->left && !root->right)
+  {
+  maxi=max(maxi,root->key);
+  return root->key;
+  }
+  int lh=maxsum(root->left,maxi);
+  int rh=maxsum(root->right,maxi);
+  maxi=max(maxi,root->key+lh+rh);
+
+  return root->key+lh+rh;
+
+}
+
+int main()
+{
+    /*
+               1
+             /   \
+            /     \
+          -2       3
+          / \     /  \
+         /   \   /    \
+        4     5 -6     2
+    */
+ 
+    Node* root = newNode(1);
+    root->left = newNode(-2);
+    root->right = newNode(3);
+    root->left->left = newNode(4);
+    root->left->right = newNode(5);
+    root->right->left = newNode(-6);
+    root->right->right = newNode(2);
+   int maxi=INT_MIN;
+maxsum(root,maxi);
+    cout << maxi;
+    return 0;
+}

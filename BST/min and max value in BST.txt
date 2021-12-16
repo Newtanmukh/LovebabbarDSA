@@ -1,0 +1,17 @@
+int minValue(struct Node *root) {
+    int maxi=0;
+    while(root!=NULL)
+    {maxi=root->data;
+        root=root->left;
+    }
+    return maxi;
+}
+
+int maxValue(struct Node *root) {
+    int maxi=0;
+    while(root!=NULL)
+    {maxi=root->data;
+        root=root->right;
+    }
+    return maxi;
+}
