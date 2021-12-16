@@ -1,0 +1,27 @@
+class Solution {
+public://generally will work for when difference=1
+
+    int longestSubsequence(vector<int>& arr, int difference) {
+        int size=arr.size();
+        int dp[size];
+        
+        int i;
+        for(i=0;i<size;i++)
+            dp[i]=1;
+        
+        int j;
+        
+        for(i=1;i<size;i++)
+        {for(j=0;j<i;j++)
+        {
+            if(arr[i]-arr[j]==difference||arr[i]-arr[j]==-difference)
+                dp[i]=max(dp[i],dp[j]+1);
+        }
+         }
+        
+        
+        return *max_element(dp,dp+size);
+        
+        
+    }
+};

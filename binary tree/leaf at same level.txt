@@ -1,0 +1,29 @@
+class Solution{
+  public:
+    vector<pair<Node*,int>> map;
+    void dfs(Node* root,int count)
+    {
+        if(!root)
+        return;
+        count++;
+        if(!root->left && !root->right)
+        map.push_back({root,count});
+        
+        dfs(root->left,count);
+        dfs(root->right,count);
+        
+    }
+    
+    
+    bool check(Node *root)
+    {
+        set<int> s;
+        int count=0;
+        dfs(root,count);
+        
+        for(auto x:map)
+        s.insert(x.second);
+        
+        return s.size()==1;
+    }
+};

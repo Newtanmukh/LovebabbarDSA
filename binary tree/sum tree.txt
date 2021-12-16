@@ -1,0 +1,35 @@
+//check that each node is sum of its left and right subtree
+
+
+
+
+class Solution
+{
+    public:
+   int f=1;
+   int solve(Node* root)
+   {
+       if(!root)
+       return 0;
+   if(!root->left && !root->right)
+return root->data;
+       
+       int lh=solve(root->left);
+       int rh=solve(root->right);
+       
+       if(root->data!=lh+rh)f=0;
+       return lh+rh+root->data;
+       
+       
+   }
+    bool isSumTree(Node* root)
+    {
+        if(!root)
+        return 0;
+        int lamd=solve(root);
+        
+        
+        
+        return f==1?true:false;
+    }
+};

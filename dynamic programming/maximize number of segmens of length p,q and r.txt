@@ -1,0 +1,30 @@
+int findMaximum(int l, int p, int q, int r)
+{
+
+	
+	int dp[l + 1];
+
+
+	memset(dp, INT_MIN, sizeof(dp));
+
+	
+	dp[0] = 0;
+  int a[3];
+  a[0]=p;
+  a[1]=q;
+  a[2]=r;
+
+
+	for(int i=1;i<=l;i++)
+{
+     for(int j=0;j<3;j++)
+     {
+          if(i>=a[j])
+          {
+               dp[i]=max(dp[i],1+dp[i-a[j]]);
+          }
+     }
+}
+	
+	return dp[l];
+}
